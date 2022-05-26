@@ -1,3 +1,4 @@
+# version 0.1
 # Power.log by GROOP - 2022
 # Programed by Joshua Jnadrell 
 
