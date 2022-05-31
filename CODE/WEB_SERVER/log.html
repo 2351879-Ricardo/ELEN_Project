@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Power.Log data</title>
+
+    <!--STYLE-->
+    <link rel="stylesheet" href="./CSS/css.css" />
+    <link rel="stylesheet" href="./CSS/log.css" />
+
+    <!--SCRIPTS-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="./JAVASCRIPT/makeTamplates.js"></script>
+    <script src="./JAVASCRIPT/login.js"></script>
+
+    <script>
+      LoadCustomTemplates("./HTML_TEMPLATES/doc_wrapper.html");
+    </script>
+  </head>
+  <body class="norm">
+    <header>
+      <nav-bar>
+        <span slot="title">Power.Log > Log</span>
+      </nav-bar>
+    </header>
+    <main>
+      <article class="log-wrapper">
+        <form class="log">
+          <article>
+            <label for="#odometer">Odomerter Reading</label>
+            <input type="number" id="odomerter" required />
+          </article>
+          <article>
+            <label for="consumption">Average Consumption</label>
+            <input type="number" id="consumption" required />
+          </article>
+          <article>
+            <label for="#car-select">Vehicle</label>
+            <select id="car-select">
+              <option>Basc</option>
+              <option>Nice</option>
+            </select>
+          </article>
+          <article>
+            <input type="submit" value="login" />
+          </article>
+        </form>
+      </article>
+    </main>
+  </body>
+</html>

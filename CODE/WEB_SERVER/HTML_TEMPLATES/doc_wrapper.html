@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Power.log doc-wrapper</title>
+  </head>
+  <body>
+    <!--Template that contains full-->
+    <template id="nav-bar">
+      <link rel="stylesheet" href="./CSS/navBar.css" />
+      <nav class="nav-bar">
+        <label for="#nav-bar"
+          ><h1><slot name="title">Power.Log</slot></h1></label
+        >
+        <ul id>
+          <li id="log-link"><a href="./log.html">Log</a></li>
+          <li id="comp-link"><a href=".">Compare</a></li>
+          <li id="account-link"><a href=".">Account</a></li>
+          <li id="account">
+            <slot name="google-login">account</slot>
+          </li>
+        </ul>
+      </nav>
+    </template>
+  </body>
+</html>
