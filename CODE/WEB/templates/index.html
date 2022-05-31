@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block head %} {% endblock%} {% block body %}
+<doc-wrapper>
+    <article slot="content">
+        <h1 class="p-title">Power.Log</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </article>
+</doc-wrapper>
+{% endblock%}
