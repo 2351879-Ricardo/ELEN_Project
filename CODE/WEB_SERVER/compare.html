@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="./JAVASCRIPT/makeTamplates.js"></script>
+    <script src="./JAVASCRIPT/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./JAVASCRIPT/fetch.js"></script>
+    <script src="./JAVASCRIPT/compare.js" defer></script>
+    <script src="./JAVASCRIPT/graphs.js" defer></script>
+    <script>
+      LoadCustomTemplates("./HTML_TEMPLATES/doc_wrapper.html");
+    </script>
+
+    <link rel="stylesheet" href="./CSS/compare.css" />
+    <link rel="stylesheet" href="./CSS/css.css" />
+    <title>Power.Compare</title>
+  </head>
+  <body class="norm">
+    <header class="norm">
+      <nav-bar></nav-bar>
+    </header>
+    <main>
+      <article class="setup-wrapper">
+        <article>
+          <form class="request-data" id="comp-request">
+            <article>
+              <label for="#date-start">Start Date</label>
+              <input type="date" id="date-start" required />
+            </article>
+            <article>
+              <label for="#date-end">Start Date</label>
+              <input type="date" id="date-end" required />
+            </article>
+            <article></article>
+            <article>
+              <input type="submit" value="Get Report" id="comp-submit" />
+            </article>
+          </form>
+        </article>
+        <article id="vehcle-box">
+          <ul id="vehicle-list"></ul>
+          <form id="add-vehicle">
+            <select id="fuel-type" required>
+              <option>Petrol</option>
+              <option>Desiel</option>
+              <option>Electric</option>
+              <option>Hydrogen</option>
+            </select>
+            <input type="submit" value="Add Vehicle" id="vehicel-submit" />
+          </form>
+        </article>
+      </article>
+      <article class="graph-wrapper">
+        <li><canvas id="energy" class="chart" chart-type="bar"></canvas></li>
+      </article>
+    </main>
+  </body>
+
+  <!--TEMPLATES-->
+  <template id="vehicle">
+    <li>
+      <span class="vehicle-name">Car</span>
+      <span class="fuel-type">pertorl</span>
+      <span class="vehcile-type">Sudan</span>
+    </li>
+  </template>
+</html>
