@@ -20,41 +20,60 @@
     <title>Power.Compare</title>
   </head>
   <body class="norm">
-    <header class="norm">
+    <header>
       <nav-bar></nav-bar>
     </header>
     <main>
       <article class="setup-wrapper">
-        <article>
-          <form class="request-data" id="comp-request">
-            <article>
-              <label for="#date-start">Start Date</label>
-              <input type="date" id="date-start" required />
+        <article class="request-wrapper">
+          <form id="comp-request">
+            <div clas="request-grid">
+              <article>
+                <label for="#date-start">Start Date</label>
+                <input type="date" id="date-start" required />
+              </article>
+              <article>
+                <label for="#date-end">End Date</label>
+                <input type="date" id="date-end" required />
+              </article>
+            </div>
+
+            <article id="vehcle-box">
+              <label for="#vehicle-list">Vehicles</label>
+              <ul id="vehicle-list">
+                <li id="add-vehicle">
+                  <article>
+                    <label for="fuel-select">Fuel</label>
+                    <select id="fuel-select">
+                      <option value="all">All</option>
+                      <option value="petrol">Petrol</option>
+                      <option value="diesel">Deisel</option>
+                      <option value="electric">Electric</option>
+                    </select>
+                  </article>
+                  <article>
+                    <label for="type-select">Type</label>
+                    <select id="type-select" disabled="true">
+                      <option value="all">All</option>
+                    </select>
+                  </article>
+                  <article>
+                    <label for="model-select">Model</label>
+                    <select id="model-select" disabled="true">
+                      <option value="all">All</option>
+                    </select>
+                  </article>
+                  <!--<button class="b-action">Add vehicle</button> Add for multi vehicle compparison later -->
+                </li>
+              </ul>
             </article>
             <article>
-              <label for="#date-end">Start Date</label>
-              <input type="date" id="date-end" required />
+              <input type="submit" value="Compare" id="comp-submit" />
             </article>
-            <article></article>
-            <article>
-              <input type="submit" value="Get Report" id="comp-submit" />
-            </article>
-          </form>
-        </article>
-        <article id="vehcle-box">
-          <ul id="vehicle-list"></ul>
-          <form id="add-vehicle">
-            <select id="fuel-type" required>
-              <option>Petrol</option>
-              <option>Desiel</option>
-              <option>Electric</option>
-              <option>Hydrogen</option>
-            </select>
-            <input type="submit" value="Add Vehicle" id="vehicel-submit" />
           </form>
         </article>
       </article>
-      <article class="graph-wrapper">
+      <article class="chat-wrapper">
         <li><canvas id="energy" class="chart" chart-type="bar"></canvas></li>
       </article>
     </main>
@@ -63,9 +82,13 @@
   <!--TEMPLATES-->
   <template id="vehicle">
     <li>
-      <span class="vehicle-name">Car</span>
-      <span class="fuel-type">pertorl</span>
-      <span class="vehcile-type">Sudan</span>
+      <span class="p-name">Car</span>
+      <span class="p-fuel">pertorl</span>
+      <span class="p-type">Sudan</span>
+      <!--<button class="b-action">Remove</button> -->
     </li>
+  </template>
+  <template id="option-template">
+    <option></option>
   </template>
 </html>

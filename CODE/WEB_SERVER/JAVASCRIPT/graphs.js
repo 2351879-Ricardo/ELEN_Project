@@ -2,6 +2,8 @@ const chartCalls = "chart"; // all elements with this class will be made into ch
 const chartTypleAttribute = "chart-type";
 const dataTypeAtttribute = "id";
 
+const energyUsageChart = document.getElementById("energy");
+
 const chartOptions = {
   scales: {
     x: {
@@ -42,9 +44,44 @@ const chartOptions = {
   maintainAspectRatio: true,
 };
 
-// Called on doccument load
-MakeCharts();
+// Energy usage chart
+function DrawEnergyChart(travelData) {
+  MakeChart(energyUsageChart.id, "bar", GetEnergyData(travelData));
+}
 
+function GetEnergyData(travelData) {
+  let data = {
+    labels: GetEnergyLables(travelData),
+    datasets: [
+      {
+        label: "Total Energy used",
+        data: GetEnergyValues(travelData),
+      },
+    ],
+  };
+  return data;
+}
+
+function GetEnergyValues(travelData) {
+  let values = [];
+  travelData.forEach((data) => {
+    values.push(data.EnergyUsed());
+  });
+  return values;
+}
+
+function GetEnergyLables(travelData) {
+  let values = [];
+  travelData.forEach((data) => {
+    values.push(data.vehicle.DisplayName());
+  });
+  return values;
+}
+
+// Called on doccument load
+//MakeCharts();
+
+// Makes all charts in doccument - depricated
 function MakeCharts() {
   console.log("hmm");
   let charts = document.getElementsByClassName("chart");

@@ -49,10 +49,9 @@ function LoadCustomTemplates(href) {
       return doc.body;
     })
     .then((body) => {
-      document.body.appendChild(body);
-
-      let temps = body.querySelectorAll("template");
-      Array.from(temps).forEach((template) => {
+      templates = body.querySelectorAll("template");
+      Array.from(templates).forEach((template) => {
+        document.body.appendChild(template);
         MakeShadowTemplate(template.id);
       });
     });
