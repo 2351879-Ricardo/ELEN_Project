@@ -1,7 +1,5 @@
-import filePopulation
+import log
 
-filePopulation.dataIn('test', 'hello world')
+log.newLog('test', '05/03', '123', '12', '1')
 
-lines=filePopulation.dataOut('test')
-for line in lines:
-	print(line)
+print(log.getVehicleModel('test'))
