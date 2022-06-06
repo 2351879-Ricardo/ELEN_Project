@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test backend</title>
+  </head>
+  <body>
+    <button onclick="PostTest('bad')">Post 'bad'</button>
+    <button onclick="PostTest('nice')">Post 'nice'</button>
+    <script>
+      async function PostTest(input) {
+        fetch("http://127.0.0.1:5000/test", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(input),
+        })
+          .then((resposne) => {
+            return resposne.json();
+          })
+          .then((json) => {
+            console.log(json);
+            return json;
+          })
+          .then((json) => {
+            // You can keep doing more async stuff
+          });
+      }
+    </script>
+  </body>
+</html>
