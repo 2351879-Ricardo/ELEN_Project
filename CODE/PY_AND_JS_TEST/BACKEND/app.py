@@ -1,6 +1,7 @@
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import pullTest
 
 
 app = Flask(__name__)
@@ -11,9 +12,8 @@ cors = CORS(app)
 def test():
     data = request.get_json()
 
-    response = "YOU STUPID DONKEY!!!!!!"
-    if(data=='nice'):
-        response = "well done"
+
+    response = test(data)
 
 
     response = jsonify(response)
