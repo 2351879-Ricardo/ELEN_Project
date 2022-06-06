@@ -26,9 +26,25 @@ function MakeShadowTemplate(templateName) {
       constructor() {
         super();
         let template = document.getElementById(templateName);
-        let templateContent = template.content;
         const shadowRoot = this.attachShadow({ mode: "open" });
-        shadowRoot.appendChild(templateContent.cloneNode(true));
+        shadowRoot.appendChild(template.content.cloneNode(true));
+      }
+    }
+  );
+}
+
+// Light templates have limited funtionality and should only be used for lightwight stic HTML
+// light templates appeare as par of the main doument (no shdow root) and are effected thier parent container
+// <slots> are not supported (for security reasons)  <script> tags will not be called when the templet is loaded
+// (Events and funtions called from buttons work as normal)
+function MakeLightTemplate(templateName) {
+  customElements.define(
+    templateName,
+    class extends HTMLElement {
+      constructor() {
+        super();
+        let template = document.getElementById(templateName);
+        this.appendChild(template.content.firstElementChild.cloneNode(true));
       }
     }
   );

@@ -9,15 +9,14 @@
     <script src="../../CODE/WEB_SERVER/JAVASCRIPT/nav.js"></script>
   </head>
   <body>
-    <h1>Test the Cookie system for checkLogin.js</h1>
+    <h1>If you get here it's done</h1>
     <script>
-      // Check basic cookies
-      SetCookie("test", "good");
-      console.assert(GetCookie("test") === "good");
-      SetCookie("test", "better");
-      console.assert(GetCookie("test") === "better");
-      SetCookie("test", "best");
+      console.assert(GetCookie("test") === "best");
+      console.log(GetCookie("test"));
+      DeleteCookie("test");
+      console.assert(GetCookie("test") == null);
+
+      // Check id spsific cookeis
     </script>
-    <a href="./test_cookie_2.html">Next</a>
   </body>
 </html>
