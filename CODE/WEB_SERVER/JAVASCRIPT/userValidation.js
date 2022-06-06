@@ -7,7 +7,7 @@ function SignUp() {
 
     console.log(userID);
     // Check if UserID is taken...
-    // >> User ID Check
+    // >> User ID Check (PYTHON >> Passes in UserID and returns bool)
 
     // Check if Init && Confirm Passwords Match
     if (password1 != password2) {
@@ -15,9 +15,26 @@ function SignUp() {
         return;
     }
 
-    // >> STORE DATA
+    // >> STORE DATA (PYTHON >> takes in all info and stores in user file)
 
-    return;
+    // Login User
+    LoginUser(userID);
+}
+
+function SignIn() {
+    let userID = document.getElementById("i-username").value; // Get UserID 
+    let password1 = document.getElementById("i-password").value; // Gets User's Entered Password
+
+    let isValid = false;
+    // >> CHECK PASSWORD (PYTHON >> takes in username & password and compares and returns bool)
+
+    if (!isValid) {
+        DisplayError("UserID and/or Password is Inccorect!");
+        return;
+    }
+
+    // Login User
+    LoginUser(userID);
 }
 
 function callbackFunc(response) {
