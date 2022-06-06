@@ -5,6 +5,7 @@ const idCookieName = "bsicuitBoi";
 // Return the value of a spcfic cookie
 function GetCookie(cookieName) {
   let decodedCookie = decodeURIComponent(document.cookie);
+  console.log(decodedCookie);
 }
 function SetCookie(name, value) {
   document.cookie = name + "=" + value + ";path=/";

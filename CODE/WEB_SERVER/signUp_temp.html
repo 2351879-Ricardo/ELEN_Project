@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp</title>
+  </head>
+  <body>
+    <form>
+      <article class="input-feild">
+        <label for="i-new-username">Username</label>
+        <input type="text" id="i-new-username" required />
+      </article>
+      <!-- <article class="input-feild">
+        <label for="i-email">Email</label>
+        <input type="email" id="i-email" />
+      </article>-->
+      <article class="input-feild">
+        <label for="i-new-password">Password</label>
+        <input type="password" id="i-new-password" required />
+      </article>
+      <article class="input-feild">
+        <label for="i-new-password-confirm">Confirm Password</label>
+        <input type="password" id="i-password-confirm" required />
+      </article>
+
+      <article id="i-new-vehicle">
+        <!-- Thie will be a standard template and popualted with feilds from the server-->
+        <label for="fuel-select">Fuel</label>
+        <select id="fuel-select">
+          <option value="all">All</option>
+          <option value="petrol">Petrol</option>
+          <option value="diesel">Deisel</option>
+          <option value="electric">Electric</option>
+        </select>
+      </article>
+      <article>
+        <label for="type-select">Type</label>
+        <select id="type-select">
+          <option value="all">Any</option>
+          <option value="car?">car?</option>
+          <option value="truck?">truck?</option>
+        </select>
+      </article>
+      <article>
+        <label for="model-select">Model</label>
+        <!-- Will add option to input string if model not yet listed -->
+        <select id="model-select">
+          <option value="all">All</option>
+          <option value="foo">foo</option>
+          <option value="bar">bar</option>
+        </select>
+      </article>
+      <article class="input-feild">
+        <input
+          type="submit"
+          id="i-submit-new-user"
+          value="Create Account"
+          required
+        />
+      </article>
+    </form>
+  </body>
+</html>
