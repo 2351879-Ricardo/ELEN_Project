@@ -1,4 +1,3 @@
-
 #Takes in the name of the file (without the type) as a string, and a log as a string.
 #Prints the log string to the file
 def dataIn(fileName, log):
@@ -11,4 +10,3 @@ def dataOut(fileName):
 	file1=open(fileName+'.txt', 'r+')
 	logs=file1.readlines()
 	return logs
-
