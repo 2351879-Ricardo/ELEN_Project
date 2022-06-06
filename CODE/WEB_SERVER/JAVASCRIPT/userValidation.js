@@ -4,10 +4,11 @@ function SignUp() {
     let password2 = document.getElementById("i-password-confirm").value; // Gets User's Password Confirm
     // let model = document.getElementById("car-model").value; // Gets User's Car Deatails (Subject to change based on how data is stored)
 
-
-    console.log(userID);
-    // Check if UserID is taken...
-    // >> User ID Check (PYTHON >> Passes in UserID and returns bool)
+    // userExists = (PYTHON >> UserExists(userID) >> returns true or false)
+    if (userExists) {
+        DisplayError("Username Already In Use!");
+        return;
+    }
 
     // Check if Init && Confirm Passwords Match
     if (password1 != password2) {
@@ -15,7 +16,7 @@ function SignUp() {
         return;
     }
 
-    // >> STORE DATA (PYTHON >> takes in all info and stores in user file)
+    // >> PYTHON >> CreateUser(userID, password, ##CARMODEL)
 
     // Login User
     LoginUser(userID);
@@ -23,10 +24,9 @@ function SignUp() {
 
 function SignIn() {
     let userID = document.getElementById("i-username").value; // Get UserID 
-    let password1 = document.getElementById("i-password").value; // Gets User's Entered Password
+    let password = document.getElementById("i-password").value; // Gets User's Entered Password
 
-    let isValid = false;
-    // >> CHECK PASSWORD (PYTHON >> takes in username & password and compares and returns bool)
+    // isValid = (PYTHON >> IsValidSignIn(userID, password) >> returns true or false)
 
     if (!isValid) {
         DisplayError("UserID and/or Password is Inccorect!");
