@@ -17,3 +17,5 @@ function SetCookie(name, value) {
 function checkId() {
   let idCookie = GetCookie(idCookieName);
 }
+// Placholder
+function MakeUserCookie(userId) {}
