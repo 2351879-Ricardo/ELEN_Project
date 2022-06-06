@@ -23,9 +23,9 @@ OnDocLoad();
 
 function RequestData() {
   AddInputVehicle();
-  let travelReports = GetUserReports();
+  let travelReports = [];
+  travelReports.push(...GetUserReports());
   travelReports.push(...GetGeneralReports());
-  console.log(travelReports);
   DrawEnergyChart(travelReports);
 }
 
@@ -44,6 +44,7 @@ function GetGeneralReports() {
   comparedVehicles.forEach((vehicle) => {
     reports.push(GetGeneralTravelData(vehicle));
   });
+  comparedVehicles.length = 0;
   return reports;
 }
 
@@ -51,7 +52,7 @@ function OnDocLoad() {
   let vehciles = GetUserVehicles();
   vehciles.forEach((vehicle) => {
     let elem = MakeVehicelElem(vehicle, true);
-    userVehicles.push({ vehicle });
+    userVehicles.push(vehicle);
   });
 
   SetFormDefaults();
@@ -123,7 +124,7 @@ function GetInputVehicle() {
   let fuel = fuelSelect.value;
   let type = typeSelect.value;
   let model = modelSelect.value;
-  return new vehicle(model, fuel, type);
+  return new Vehicle(model, fuel, type);
 }
 
 // option adding

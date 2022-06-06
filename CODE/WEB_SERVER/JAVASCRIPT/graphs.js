@@ -2,7 +2,8 @@ const chartCalls = "chart"; // all elements with this class will be made into ch
 const chartTypleAttribute = "chart-type";
 const dataTypeAtttribute = "id";
 
-const energyUsageChart = document.getElementById("energy");
+const energyUsageCanvas = document.getElementById("energy");
+var energyUsageChart;
 
 const chartOptions = {
   scales: {
@@ -46,7 +47,14 @@ const chartOptions = {
 
 // Energy usage chart
 function DrawEnergyChart(travelData) {
-  MakeChart(energyUsageChart.id, "bar", GetEnergyData(travelData));
+  if (typeof energyUsageChart !== "undefined") {
+    energyUsageChart.destroy();
+  }
+  energyUsageChart = MakeChart(
+    energyUsageCanvas.id,
+    "bar",
+    GetEnergyData(travelData)
+  );
 }
 
 function GetEnergyData(travelData) {
@@ -65,7 +73,7 @@ function GetEnergyData(travelData) {
 function GetEnergyValues(travelData) {
   let values = [];
   travelData.forEach((data) => {
-    values.push(data.EnergyUsed());
+    values.push(data.energyUse);
   });
   return values;
 }
@@ -73,7 +81,7 @@ function GetEnergyValues(travelData) {
 function GetEnergyLables(travelData) {
   let values = [];
   travelData.forEach((data) => {
-    values.push(data.vehicle.DisplayName());
+    values.push(data.vehicle.name);
   });
   return values;
 }
@@ -83,7 +91,6 @@ function GetEnergyLables(travelData) {
 
 // Makes all charts in doccument - depricated
 function MakeCharts() {
-  console.log("hmm");
   let charts = document.getElementsByClassName("chart");
   Array.from(charts).forEach((chartElem) => {
     let data = GetChartData(chartElem);
@@ -92,11 +99,12 @@ function MakeCharts() {
 }
 
 function MakeChart(id, type, data) {
-  new Chart(id, {
+  let chart = new Chart(id, {
     type: type,
     data,
     options: chartOptions,
   });
+  return chart;
 }
 
 // Anamaytics fetching funtions
@@ -115,20 +123,4 @@ function GetChartData(chartElem) {
 
 function GetLables() {
   return ["you", "Other car"];
-}
-function GetEnergyData() {
-  let data = {
-    labels: GetLables(),
-    datasets: [
-      {
-        label: "Total Energy used",
-        data: GetEnergyValues(),
-      },
-    ],
-  };
-  return data;
-}
-function GetEnergyValues() {
-  console.log("NB! Energy data system is tempory");
-  return [Math.random() * 1000, Math.random() * 1000];
 }

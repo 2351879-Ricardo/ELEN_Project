@@ -4,17 +4,17 @@
 const userId = "jeff";
 
 // Vehcile class
-class vehicle {
+class Vehicle {
   constructor(name, fuel, type, uservehicle = false) {
     this.name = name;
     this.fuel = fuel;
     this.type = type;
-    this.uservehcile = uservehicle;
+    this.userVehicle = uservehicle;
   }
 
-  get DisplayName() {
+  get displayName() {
     let prefix = "average ";
-    if (this.uservehcile) {
+    if (this.userVehicle) {
       prefix = "your ";
     }
     return prefix + this.name;
@@ -31,12 +31,16 @@ class TravelData {
     return this.energyUsed / this.distance;
   }
 
-  get EnergyUsed() {
+  get energyUse() {
     return this.energyUsed;
   }
 
-  get Distancetravelled() {
+  get distanceTravelled() {
     return this.distance;
+  }
+
+  get type() {
+    return this.type;
   }
 }
 
@@ -46,13 +50,12 @@ function GetUserVehicles() {
   let userVehicles = [];
   for (let i = 0; i < vCount; i++) {
     // userVehicles.push(GetVehicle(true));
-    userVehicles.push(new vehicle("User car " + i, "petrol", "hatchback"));
+    userVehicles.push(new Vehicle("User car " + i, "petrol", "hatchback"));
   }
   return userVehicles;
 }
 
 function GetUserTravelData(userVehicle, dateFrom, dateTo) {
-  console.log(dateFrom);
   let userData = new TravelData(
     userVehicle,
     Math.random() * 1000,
@@ -60,7 +63,7 @@ function GetUserTravelData(userVehicle, dateFrom, dateTo) {
   );
   return userData;
 }
-function GetGeneralTravelData(vechicle) {
+function GetGeneralTravelData(vehicle) {
   return new TravelData(vehicle, Math.random() * 1000, Math.random() * 100);
 }
 
@@ -74,7 +77,7 @@ function GetVehicle(forUser) {
   energy = parseFloat(energy);
   let distance = prompt("how far dd the vehicle travle");
   distance = parseFloat(distance);
-  return new vehicle(name, fuel, energy, distance, forUser);
+  return new Vehicle(name, fuel, energy, distance, forUser);
 }
 
 // Get fuels types (Mock DB)
@@ -134,3 +137,5 @@ function GetToday() {
   let year = today.getFullYear();
   return year + "-" + month + "-" + day;
 }
+
+// Login data validation
