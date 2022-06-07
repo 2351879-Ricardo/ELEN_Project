@@ -2,7 +2,6 @@ function SignUp() {
     let userID = document.getElementById("i-new-username").value; // Get UserID from Field on Sign Up Page
     let password1 = document.getElementById("i-new-password").value; // Get's User's Init Password 
     let password2 = document.getElementById("i-password-confirm").value; // Gets User's Password Confirm
-    // let model = document.getElementById("car-model").value; // Gets User's Car Deatails (Subject to change based on how data is stored)
 
     // userExists = (PYTHON >> UserExists(userID) >> returns true or false)
     if (userExists) {
@@ -15,8 +14,6 @@ function SignUp() {
         DisplayError("Passwords Do Not Match!");
         return;
     }
-
-    // >> PYTHON >> CreateUser(userID, password, ##CARMODEL)
 
     // Login User
     LoginUser(userID);
