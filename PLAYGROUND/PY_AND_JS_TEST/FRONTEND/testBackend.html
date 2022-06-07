@@ -9,9 +9,12 @@
   <body>
     <button onclick="PostTest('bad')">Post 'bad'</button>
     <button onclick="PostTest('nice')">Post 'nice'</button>
+    <button onclick="PostTest({id:'fred', 'pwd' : 'notFred'})">
+      Post 'json'
+    </button>
     <script>
       async function PostTest(input) {
-        fetch("http://127.0.0.1:5000/test", {
+        fetch("http://127.0.0.1:5000/test2", {
           method: "POST",
           headers: {
             "Content-type": "application/json",
