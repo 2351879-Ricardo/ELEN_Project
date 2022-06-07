@@ -1,12 +1,8 @@
-#version 0.0.1
-#Author: K Ngwenya
+import filePopulation
 
-
-from energyCalc import *
-
-def fetchEnergy():
-    return energyUsed(odometer, prevOdometer, avgConsumption, fuelType)
+def testFUnct():
+    filePopulation.dataIn('test2', 'Youve got to be kidding me')
     
 if __name__ == "__main__":
-    fetchEnergy()
-    print("ma se poes")
+    testFUnct()
+    
