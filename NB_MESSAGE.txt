@@ -1,1 +1,0 @@
-I hae set up a virtual enviroment for app develompment. Activate it by typing '. .vemv/bin/activate' in the consol at the root directory.

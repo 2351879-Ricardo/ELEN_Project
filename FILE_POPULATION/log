@@ -1,3 +1,0 @@
-import filePopulation
-
-def newLog(fileName, date, odometer, petrol, price)
