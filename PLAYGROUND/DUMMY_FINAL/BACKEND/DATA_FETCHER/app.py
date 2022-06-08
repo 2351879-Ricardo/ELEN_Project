@@ -1,7 +1,7 @@
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from DATA_FETCHER import userLogins
+import userLogins
 
 app = Flask(__name__)
 
@@ -10,7 +10,6 @@ cors = CORS(app)
 @app.route('/signup/exists', methods=['POST'])
 def UserExists():
     userId = request.get_json()
-    print('======================= ID ' + userId + '=========================')
     exists = userLogins.UserExists(userId)
     response = jsonify(exists)
     return response
@@ -19,7 +18,7 @@ def CreateAccount():
     accountData = request.get_json()
     id = accountData['userID']
     password = accountData['password']
-    #userLogins.CreateUser(id,password)
+    userLogins.CreateUser(id,password)
     return jsonify(True)
 @app.route('/signin/valid', methods=['POST'])
 def CheckValidSignin():

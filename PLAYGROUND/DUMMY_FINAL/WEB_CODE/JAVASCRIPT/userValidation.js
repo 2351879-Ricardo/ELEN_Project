@@ -25,7 +25,7 @@ function CheckPassword(password1, password2) {
   } else return true;
 }
 function SignInClicK(form) {
-  console.log(form.userID.value);
+  SignIn(form);
   return false;
 }
 
@@ -39,7 +39,7 @@ function SignIn(form) {
       DisplayError("UserID and/or Password is Inccorect!");
       return false;
     }
-
+    console.log("valid");
     // Login User
     LoginUser(userID);
   });

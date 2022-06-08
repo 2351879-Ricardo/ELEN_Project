@@ -42,7 +42,7 @@ function PostNewUser(username, pword) {
 
 function FetchValidSignIn(username, pword) {
   return new Promise((resolve) => {
-    let userDetails = { userId: username, password: pword };
+    let userDetails = { userID: username, password: pword };
     fetch(serverHref + "/signin/valid", {
       method: "POST",
       headers: {
