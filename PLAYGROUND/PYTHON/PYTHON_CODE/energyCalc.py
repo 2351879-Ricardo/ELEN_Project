@@ -2,7 +2,7 @@
 # Author: K Ngwenya
 # Last endited: J Jandrell (22-05-26)
 
-from calculation.unitConverter import *
+from unitConverter import *
 
 def distanceTravelled(odometer, prevOdometer):          #This function finds the distance travelled between logs
     return (odometer - prevOdometer)                    # by subtracting the current odometer reading from the previous one

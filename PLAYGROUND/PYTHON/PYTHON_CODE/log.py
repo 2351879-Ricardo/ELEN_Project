@@ -6,7 +6,7 @@ import datetime
 class Log:
 	def __init__(self, date, odometer, petrol, price):
 		self.date = date
-		self.dodmeter = float(odometer)
+		self.odometer = float(odometer)
 		self.petrol = float(petrol)
 		self.price = float(price)
 		
