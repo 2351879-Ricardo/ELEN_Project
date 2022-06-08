@@ -18,8 +18,10 @@ def UserExists():
 def CreateAccount():
     accountData = request.get_json()
     # --- call make account
-    return jsonify(True)
-    
+    return jsonify(userID)
+@app.route('/signin/valid', methods=['POST'])
+def CheckValidSignin():
+    return jsonify(True) 
 
 
 if(__name__ == "__main__"):

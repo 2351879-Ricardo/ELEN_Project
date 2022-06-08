@@ -26,27 +26,20 @@ function CheckPassword(password1, password2) {
   }
 }
 
-// this is a bit hacky - but it should be called when the fetch is complete
-function OnIdExisits() {}
-
 function SignIn() {
   let userID = document.getElementById("i-username").value; // Get UserID
   let password = document.getElementById("i-password").value; // Gets User's Entered Password
 
   // isValid = (PYTHON >> IsValidSignIn(userID, password) >> returns true or false)
+  FetchValidSignIn(userID, password).then((isValid) => {
+    if (!isValid) {
+      DisplayError("UserID and/or Password is Inccorect!");
+      return false;
+    }
 
-  if (!isValid) {
-    DisplayError("UserID and/or Password is Inccorect!");
-    return false;
-  }
-
-  // Login User
-  LoginUser(userID);
-}
-
-function callbackFunc(response) {
-  console.log(response);
-  return false;
+    // Login User
+    LoginUser(userID);
+  });
 }
 
 function DisplayError(err) {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--META DATA-->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!--STYLE-->
+    <link rel="stylesheet" href="../CSS/css.css" />
+    <link rel="stylesheet" href="../CSS/index.css" />
+
+    <!--SCRIPTS-->
+    <script src="../JAVASCRIPT/userValidation.js"></script>
+    <script src="../JAVASCRIPT/makeTamplates.js"></script>
+    <script src="../JAVASCRIPT/fetch.js"></script>
+    <script src="../JAVASCRIPT/cookieMonster.js"></script>
+    <script src="../JAVASCRIPT/index.js" defer></script>
+    <script src="../JAVASCRIPT/nav.js"></script>
+
+    <!--JS SETUP-->
+    <script>
+      LoadCustomTemplates("./TEMPLATES/NAV_BAR/navBar.html");
+      LoadCustomTemplates("./TEMPLATES/signinTemplates.html");
+      CheckLogin();
+    </script>
+    <title>Power.Log</title>
+  </head>
+
+  <body class="norm">
+    <header class="norm">
+      <nav-bar-out>
+        <span slot="title">Power.Log > Home</span>
+      </nav-bar-out>
+    </header>
+    <main>
+      <article id="error-display"></article>
+      <article class="home-panel" id="nav-panel">
+        <nav id="home-nav-options">
+          <button onclick="SetMainPanel('sign-in-panel')">Sign in</button
+          ><button onclick="SetMainPanel('sign-up-panel')">
+            Create Account
+          </button>
+        </nav>
+      </article>
+      <article class="home-panel no-display" id="sign-up-panel">
+        <sign-up></sign-up>
+        <nav id="home-nav-options">
+          <button onclick="SetMainPanel('nav-panel')">&#9664; Back</button>
+        </nav>
+      </article>
+      <article class="home-panel no-display" id="sign-in-panel">
+        <sign-in> </sign-in>
+        <nav id="home-nav-options">
+          <button onclick="SetMainPanel('nav-panel')">&#9664; Back</button>
+        </nav>
+      </article>
+    </main>
+  </body>
+</html>
