@@ -5,8 +5,6 @@ const signUp = document.getElementById("sign-up-panel");
 const signIn = document.getElementById("sign-in-panel");
 
 const errorContainer = document.getElementById("error-display");
-
-const hiddenClass = "no-display"; // CSS class given to object which must be hidden
 let currentPanel = navPanel;
 
 SetMainPanel(navPanel);
@@ -34,18 +32,6 @@ function SetCurrentPanel(panel) {
     HidePanel(currentPanel);
     ShowPanel(panel);
     currentPanel = panel;
-  }
-}
-
-// panel is a css element
-function ShowPanel(panel) {
-  if (panel.classList.contains(hiddenClass)) {
-    panel.classList.remove(hiddenClass);
-  }
-}
-function HidePanel(panel) {
-  if (!panel.classList.contains(hiddenClass)) {
-    panel.classList.add(hiddenClass);
   }
 }
 

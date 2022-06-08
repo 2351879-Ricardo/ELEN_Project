@@ -13,7 +13,6 @@ async function SignUp(form) {
       DisplayError("Username Already In Use!");
       return false;
     } else if (CheckPassword(password1, password2)) {
-      console.log("posting");
       PostNewUser(userID, password1).then((id) => LoginUser(userID));
     }
   });
