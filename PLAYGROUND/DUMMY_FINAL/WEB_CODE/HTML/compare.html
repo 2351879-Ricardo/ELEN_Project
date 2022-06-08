@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../JAVASCRIPT/makeTamplates.js"></script>
+    <script src="../JAVASCRIPT/fetch.js"></script>
+    <script src="../JAVASCRIPT/cookieMonster.js"></script>
+    <script src="../JAVASCRIPT/nav.js"></script>
+    <script src="../JAVASCRIPT/compare.js" defer></script>
+    <script src="../JAVASCRIPT/graphs.js" defer></script>
+    <script>
+      LoadCustomTemplates("./TEMPLATES/NAV_BAR/navBar.html");
+    </script>
+
+    <link rel="stylesheet" href="../CSS/compare.css" />
+    <link rel="stylesheet" href="../CSS/css.css" />
+    <title>Power.Compare</title>
+  </head>
+  <body class="norm">
+    <header>
+      <nav-bar></nav-bar>
+    </header>
+    <main>
+      <article class="chat-wrapper">
+        <li><canvas id="energy" class="chart" chart-type="bar"></canvas></li>
+      </article>
+      <article class="setup-wrapper">
+        <article class="request-wrapper">
+          <form id="comp-request" onsubmit="return GetTravelData(this)">
+            <div clas="request-grid">
+              <article>
+                <label for="#date-start">Start Date</label>
+                <input type="date" id="date-start" name="dateStart" required />
+              </article>
+              <article>
+                <label for="#date-end">End Date</label>
+                <input type="date" id="date-end" name="dateEnd" required />
+              </article>
+            </div>
+
+            <article id="vehcle-box">
+              <label for="#vehicle-list">Vehicles</label>
+              <ul id="vehicle-list">
+                <li id="add-vehicle">
+                  <article>
+                    <label for="fuel-select">Fuel</label>
+                    <select
+                      id="fuel-select"
+                      name="fuel"
+                      onchange="OnFuelChange(this.value)"
+                    >
+                      <option value="all">All</option>
+                    </select>
+                  </article>
+                  <article>
+                    <label for="vehicle-select">Type</label>
+                    <select id="vehicle-select" name="vehicle" disabled="true">
+                      <option value="all">All</option>
+                    </select>
+                  </article>
+                  <button id="b-add-vehicle" onclick="return AddInputVehicle()">
+                    Add vehicle
+                  </button>
+                </li>
+              </ul>
+            </article>
+            <article>
+              <input
+                type="submit"
+                value="Compare"
+                id="b-sumbit-compare"
+                disabled="true"
+              />
+            </article>
+          </form>
+        </article>
+      </article>
+    </main>
+  </body>
+
+  <!--TEMPLATES-->
+  <template id="vehicle">
+    <li>
+      <span class="p-name">Car</span>
+      <span class="p-fuel">pertorl</span>
+      <span class="p-type">Sudan</span>
+      <input type="hidden" name="listVehicle" />
+      <button
+        class="b-action"
+        onclick="return RemoveVehicleElem(this.parentElement)"
+      >
+        Remove
+      </button>
+    </li>
+  </template>
+  <template id="option-template">
+    <option></option>
+  </template>
+</html>

@@ -1,5 +1,6 @@
 
 from genericpath import exists
+from multiprocessing import dummy
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import userLogins
@@ -39,6 +40,12 @@ def CheckLogExists():
     ## CALL DATA FETCHER FUNCTION [exists = LogExists(userID)]
     exists = False
     return jsonify(exists)
+@app.route('/log/vehicle', methods=['POST'])
+def GetUserVehicle():
+    userID = request.get_json()
+    ## CALL DATA FETCHER FUNCTION [vehicle = Uer vehicle]
+    vehicle = [{'fuel':'Petrol', 'vehicle':'Truck'}]
+    return jsonify(vehicle)
 @app.route('/log/create', methods=['POST'])
 def CreateNewLog():
     logInfo = request.get_json()
@@ -57,17 +64,45 @@ def PostLog():
     ## CALL DATABASE FUNTION TO ADD TO THE LOG [ADD LOG(userID, logDate, odometer, averageCOnsumption)]
     return jsonify(True)
 # Comparison funtions
-@app.route('/log/getdata', methods=['POST'])
-def GetLogs():
+@app.route('/database/userlog', methods=['POST'])
+def GetUserLogs():
     requestData = request.get_json()
+    print(requestData)
     userID = requestData['userID']
     dateStart = requestData['dateStart']
     dateEnd = requestData['dateEnd']
+
+    dummyUser = [{
+        'distance':450,
+        'energy':2345
+    }]
+   
+    return jsonify(dummyUser)
+@app.route('/database/average', methods=['POST'])
+def GetCombinedLogs():
+    requestData = request.get_json()
+    travelDatas = []
+    dummyOther = {
+        'distance':450,
+        'energy':3345
+    }
+    for vehicle in requestData:
+        travelDatas.append(dummyOther)
+        vehicelTyoe = vehicle['vehicle']
+        fuelType = vehicle['fuel']
+        dateStart = vehicle['dateStart']
+        dateEnd = vehicle['dateEnd']
+    return jsonify(travelDatas)
 # Basic get funtions
 @app.route('/database/types', methods=['GET'])
-def GetFuelTypes():
+def GetBasicTypes():
     typeData = [{'fuel':FUEL_TYPES, 'vehicle':VEHICEL_TYPES}]
     return jsonify(typeData)
+@app.route('/database/offueltype', methods=['POST'])
+def GetBasicVehcilesWithFuelType():
+    type = request.get_json()
+    ### Fetch vehilces by type
+    return jsonify(VEHICEL_TYPES)
 
 if(__name__ == "__main__"):
     app.run()

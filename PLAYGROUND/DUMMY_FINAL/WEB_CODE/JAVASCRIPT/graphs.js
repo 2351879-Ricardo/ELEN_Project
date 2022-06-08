@@ -81,7 +81,7 @@ function GetEnergyValues(travelData) {
 function GetEnergyLables(travelData) {
   let values = [];
   travelData.forEach((data) => {
-    values.push(data.vehicle.name);
+    values.push(data.vehicle.displayName);
   });
   return values;
 }

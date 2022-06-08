@@ -30,7 +30,6 @@ function SetNewLog() {
 
 // Creteast a new log for the user
 function MakeLog(form) {
-  console.log(",make");
   OnMakeLog(form);
   return false;
 }
@@ -62,9 +61,9 @@ function OnSubmitLogPost(form) {
 
   logData = {
     userID: GetId(),
-    logDate: form.logDate,
-    odometer: form.odometer,
-    aveFuel: form.aveFuel,
+    logDate: form.logDate.value,
+    odometer: form.odometer.value,
+    aveFuel: form.aveFuel.value,
   };
 
   FetchServer(logDate, "/log/post").then("log posted");
