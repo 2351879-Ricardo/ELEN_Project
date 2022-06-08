@@ -16,6 +16,7 @@ def dataOut(fileName):
 def byteIn(fileName, log):
 	with open(fileName+'.txt', 'ab') as f:
 		f.write(log)
+		
 #takes in the file name (without file type) 
 #returns all logs present in the chosen file		
 def byteOut(fileName):
