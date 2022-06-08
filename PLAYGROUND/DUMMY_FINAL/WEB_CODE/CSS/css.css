@@ -9,3 +9,8 @@ header.norm {
   padding: 0;
   width: 100%;
 }
+
+/* Dynamic classes */
+.no-display {
+  display: none;
+}

@@ -4,8 +4,73 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    welcome to the log
+    <title>Power.Log data</title>
+
+    <!--STYLE-->
+    <link rel="stylesheet" href="../CSS/css.css" />
+    <link rel="stylesheet" href="../CSS/log.css" />
+
+    <!--SCRIPTS-->
+    <script src="../JAVASCRIPT/userValidation.js"></script>
+    <script src="../JAVASCRIPT/makeTamplates.js"></script>
+    <script src="../JAVASCRIPT/fetch.js"></script>
+    <script src="../JAVASCRIPT/cookieMonster.js"></script>
+    <script src="../JAVASCRIPT/nav.js"></script>
+    <script src="../JAVASCRIPT/log.js" defer></script>
+
+    <script>
+      LoadCustomTemplates("./TEMPLATES/NAV_BAR/navBar.html");
+    </script>
   </head>
-  <body></body>
+  <body class="norm">
+    <header>
+      <nav-bar>
+        <span slot="title">Power.Log > Log</span>
+      </nav-bar>
+    </header>
+    <main>
+      <article class="home-panel" id="log-panel">
+        <form onsubmit="return SumbitLogPost(this)">
+          <article>
+            <label for="#log-date">Date</label>
+            <input type="date" id="log-date" name="logDate" required />
+          </article>
+          <article>
+            <label for="#odometer">Odometer Reading</label>
+            <input type="number" id="odometer" name="odometer" required />
+          </article>
+          <article>
+            <label for="consumption">Average Consumption</label>
+            <input type="number" id="consumption" name="aveFuel" required />
+          </article>
+          <article>
+            <input type="submit" value="Log" />
+          </article>
+        </form>
+      </article>
+      <article class="home-panel no-display" id="new-log-panel">
+        <form onsubmit="return MakeLog(this)">
+          <article>
+            <label for="fuel-select">Fuel</label>
+            <select id="fuel-select" name="fuel" required>
+              <option></option>
+            </select>
+          </article>
+          <article>
+            <label for="vehicle-select">Type</label>
+            <select id="vehicle-select" name="vehicle" required>
+              <option></option>
+            </select>
+          </article>
+          <article>
+            <input type="submit" value="Start Log" />
+          </article>
+        </form>
+      </article>
+    </main>
+  </body>
+  <script>
+    let logDate = document.getElementById("log-date");
+    logDate.defaultValue = GetToday();
+  </script>
 </html>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../TEMPLATES/NAV_BAR/navBar.css" />
   </head>
   <body>
-    <!--Template that contains full-->
+    <!--This template requires nav.js to funtion-->
     <template id="nav-bar">
       <slot name="selection"></slot>
       <link rel="stylesheet" href="./TEMPLATES/NAV_BAR/navBar.css" />
@@ -19,7 +19,14 @@
         <ul id>
           <li id="log-link"><a href="./log.html">Log</a></li>
           <li id="comp-link"><a href=".">Compare</a></li>
-          <li id="account-link"><a href=".">Account</a></li>
+          <li>
+            <button
+              onclick="{Logout();
+            SetSelection(this);}"
+            >
+              Log out
+            </button>
+          </li>
         </ul>
       </nav>
     </template>

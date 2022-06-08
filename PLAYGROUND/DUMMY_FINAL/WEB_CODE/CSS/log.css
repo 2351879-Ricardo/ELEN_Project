@@ -1,0 +1,17 @@
+.log-wrapper {
+  display: block;
+  margin: 20vh auto 0;
+  width: 50rem;
+  padding: 5rem;
+  border: solid rgb(78, 0, 73) 1px;
+}
+
+.log {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.log article {
+  display: block;
+  color: aqua;
+}
