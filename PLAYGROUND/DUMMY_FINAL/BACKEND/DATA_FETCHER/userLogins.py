@@ -68,5 +68,3 @@ def IsValidSignIn(userID, password):
             return False
     
     return False
-
-print(IsValidSignIn("Test", "Test"))
