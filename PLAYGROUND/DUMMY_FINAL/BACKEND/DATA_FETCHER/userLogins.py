@@ -5,6 +5,9 @@ import filePopulation
 def UserExists(userID):
     lines = filePopulation.byteOut('users')
     i = 0
+    if (len(lines) == 0):
+        return False
+
     while (i < len(lines)):
         if (i == 0):
             i += 1
@@ -63,3 +66,7 @@ def IsValidSignIn(userID, password):
             return True
         else:
             return False
+    
+    return False
+
+print(IsValidSignIn("Test", "Test"))
