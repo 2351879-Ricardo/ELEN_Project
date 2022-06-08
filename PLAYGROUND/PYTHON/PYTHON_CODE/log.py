@@ -1,4 +1,5 @@
 import filePopulation
+import datetime
 
 
 # Log object, holds the date, odometer reading, amount of petrol and the price of petrol
@@ -8,12 +9,6 @@ class Log:
 		self.dodmeter = float(odometer)
 		self.petrol = float(petrol)
 		self.price = float(price)
-
-class Date:
-	def _init_(self, year, month, day):
-		self.year = int(year)
-		self.month = int(month)
-		self.day = int(day)
 		
 # Takes in a new string and uses the filePopulation class to add the log to the specified file
 #Takes in the file name, date, odometer reading, petrol, and the price
@@ -35,7 +30,7 @@ def getLogs(fileName):
 	for x in range(1, len(lines)):
 		l=lines[x].split('#')
 		ds=l[0].split('-')
-		d = Date(ds[0], ds[1], ds[2])
+		d = datetime.date(int(ds[0]), int(ds[1]), int(ds[2]))
 		temp = Log(d, l[1], l[2], l[3])
 		v.append(temp)
 	return v
@@ -43,23 +38,20 @@ def getLogs(fileName):
 def getLogByDate(fileName, date):
 	logs=getLogs(fileName)
 	ds=date.split('-')
-	d=Date(ds[0], ds[1], ds[2])
-	for x in range(1, len(logs)):
-		if(x.date.year == d.year):
-			if(x.date.month == d.month):
-				if(x.date.day == d.day):
-					return x
+	d=datetime.date(int(ds[0]), int(ds[1]), int(ds[2]))
+	for x in logs:
+		if(x.date == d):
+			return x
+			
 	
-def getLogBetweenDates(fileName, startDate, endDate):
+def getLogsBetweenDates(fileName, startDate, endDate):
 	v=[]
 	logs=getLogs(fileName)
 	dsStart=startDate.split('-')
 	dsEnd=endDate.split('-')
-	start=Date(dsStart[0], dsStart[1], dsStart[2])
-	end = Date(dsEnd[0], dsEnd[1], dsEnd[2])
+	start = datetime.date(int(dsStart[0]), int(dsStart[1]), int(dsStart[2]))
+	end = datetime.date(int(dsEnd[0]), int(dsEnd[1]), int(dsEnd[2]))
 	for x in logs:
-		if(x.date.year >= start.year & x.date.year <= end.year):
-			if(x.date.month >= start.month & x.date.month <= end.month):
-				if(x.date.day >= start.day & x.date.day <= end.day):
-					v.append(x)
+		if(x.date >= start and x.date <= end):
+			v.append(x)
 	return v
