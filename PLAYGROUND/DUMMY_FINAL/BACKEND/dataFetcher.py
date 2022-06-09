@@ -34,7 +34,7 @@ def addLogEntry(userId, date,odometer,fuel):
     log.newLog(userId,date,odometer,fuel,0)
 
 def getLog(userId, dateStart, dateEnd):
-    fuelType = getFuelType(log.getVehicleModel(userId))
+    fuelType = getFuelType(userVehicle(userId))
     logs = log.getLogsBetweenDates(userId, dateStart, dateEnd)
     return calcaultLogs(logs, fuelType)
     
@@ -68,8 +68,8 @@ def getCombinedLog(fuel, vehicle, dateStart, dateEnd):
     for x in l:
         if(x.endswith('.txt') and x != 'users.txt'):
             vm = log.getVehicleModel(x[0:len(x)-4])
-            if(getFuelType(vm) == fuel or vehicle == 'All'):
-                if(getVehicleType(vm)==vehicle or fuel == 'All'):
+            if(getFuelType(vm) == fuel | vehicle == 'All'):
+                if(getVehicleType(vm)==vehicle | fuel == 'All'):
                     logList.append(log.getLogsBetweenDates(dateStart,dateEnd))
-    return calcaultLogs(logList, fuel)
+    return calcaultLogs(logList)
     

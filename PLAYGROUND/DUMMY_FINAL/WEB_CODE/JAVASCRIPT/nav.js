@@ -6,14 +6,14 @@ const hiddenClass = "no-display"; // CSS class given to object which must be hid
 function CheckLogin() {
   let id = GetId();
   if (id != null) {
-    /*FetchUserExists(id).then((existis) => {
+    FetchUserExists(id).then((existis) => {
       if (existis) {
         LoginUser(id);
       } else {
         // cookie is bad and should be deleted
         ClearUserCookie();
       }
-    });*/
+    });
     ClearUserCookie(); // clear all cookies for now
     // No arrros should display if login failed
     DisplayError("");
