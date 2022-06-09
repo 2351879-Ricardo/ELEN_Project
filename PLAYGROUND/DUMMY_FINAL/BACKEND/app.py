@@ -99,8 +99,8 @@ def GetBasicTypes():
 @app.route('/database/offueltype', methods=['POST'])
 def GetBasicVehcilesWithFuelType():
     Fueltype = request.get_json()
-    dataFetcher.vehiclesWithFuelType(Fueltype)
-    return jsonify(VEHICEL_TYPES)
+    vehicles = dataFetcher.vehiclesWithFuelType(Fueltype)
+    return jsonify(vehicles)
 
 if(__name__ == "__main__"):
     app.run()
