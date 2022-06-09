@@ -55,7 +55,7 @@ class TravelData {
   }
 
   get type() {
-    return this.vehicle;
+    return this.type;
   }
 }
 // called when from is submitted

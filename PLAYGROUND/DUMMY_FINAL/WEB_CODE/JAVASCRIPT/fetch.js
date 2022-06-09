@@ -1,6 +1,7 @@
 const serverHref = "http://127.0.0.1:5000";
 
 function FetchServer(input, path) {
+  console.log(input);
   return new Promise((resolve) => {
     fetch(serverHref + path, {
       method: "POST",
@@ -14,6 +15,7 @@ function FetchServer(input, path) {
         return resposne.json();
       })
       .then((json) => {
+        console.log(json);
         resolve(json);
       });
   });

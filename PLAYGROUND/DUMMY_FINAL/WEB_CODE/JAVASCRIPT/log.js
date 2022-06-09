@@ -37,8 +37,8 @@ function MakeLog(form) {
 function OnMakeLog(form) {
   logData = {
     userID: GetId(),
-    fuel: form.fuel,
-    vehicle: form.vehicle,
+    fuel: form.fuel.value,
+    vehicle: form.vehicle.value,
   };
 
   console.log(logData);
@@ -65,6 +65,7 @@ function OnSubmitLogPost(form) {
     odometer: form.odometer.value,
     aveFuel: form.aveFuel.value,
   };
-
-  FetchServer(logDate, "/log/post").then("log posted");
+  console.log(logData);
+  FetchServer(logData, "/log/post").then((data) => {console.log("log - posted")});
+  return false
 }
