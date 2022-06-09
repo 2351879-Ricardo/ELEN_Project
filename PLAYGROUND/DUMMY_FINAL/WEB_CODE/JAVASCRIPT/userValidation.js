@@ -24,6 +24,7 @@ function CheckPassword(password1, password2) {
   } else return true;
 }
 function SignInClicK(form) {
+  console.log("already");
   SignIn(form);
   return false;
 }
@@ -35,7 +36,7 @@ function SignIn(form) {
   // isValid = (PYTHON >> IsValidSignIn(userID, password) >> returns true or false)
   FetchValidSignIn(userID, password).then((isValid) => {
     if (!isValid) {
-      DisplayError("UserID and/or Password is Inccorect!");
+      DisplayError("UserID and/or Password is Inccorect! here");
       return false;
     }
     console.log("valid");

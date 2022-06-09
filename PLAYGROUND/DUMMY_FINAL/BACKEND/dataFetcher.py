@@ -10,7 +10,10 @@ def getFuelType(vehicleModel):
     return s[0]
 def getVehicleType(vehicleModel):
     s = vehicleModel.split('#')
-    return s[1]
+    vehicle = s[1]
+    vehicle = vehicle.strip('\n')
+    print(vehicle)
+    return vehicle
     
 # returns true if a log file exists for the given user where fileName=userId
 def fileExists(userId):
@@ -27,7 +30,7 @@ def createLog(userID, fuelType, vehicleType):
     if(fileExists(userID)):
         return
     with open(userID +'.txt', 'w') as f:
-        f.write(fuelType + '#' + vehicleType)
+        f.write(fuelType + '#' + vehicleType +'\n')
 
 # Calls a flies in the log.py for the sace of a single point of contact
 def addLogEntry(userId, date,odometer,fuel):
@@ -41,15 +44,19 @@ def getLog(userId, dateStart, dateEnd):
 
 # returns the total disntance and energy form a list of log items 
 def calcaultLogs(logs, fuelType):
-    totalDistance = log[-1].odometer = log[0].odometer
+    totalDistance = 0
     totalEnergy = 0
     i = 0
-    prevOdometer= logs[0].odometer
     for x in logs:
         if(i!=0):
-            totalEnergy += energyCalc.energyUsed(x.odometer,prevOdometer,fuelType,x.petrol)
+            totalEnergy += energyCalc.energyUsedOverDistance(x.distance,x.petrol,fuelType)
+            totalDistance += x.distance
         i+=1
-    return totalDistance, totalEnergy
+    if(totalDistance != 0):
+        avgEnergy = totalEnergy/totalDistance
+    else:
+        avgEnergy = 0
+    return totalDistance, totalEnergy, avgEnergy
 
 def vehiclesWithFuelType(fuelType):
     v=[]

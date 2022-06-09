@@ -14,10 +14,6 @@
           <label for="i-new-username">Username</label>
           <input type="text" id="i-new-username" name="userID" required />
         </article>
-        <!-- <article class="input-feild">
-                <label for="i-email">Email</label>
-                <input type="email" id="i-email" />
-              </article>-->
         <article class="input-feild">
           <label for="i-new-password">Password</label>
           <input
@@ -43,7 +39,7 @@
       </form>
     </template>
     <template id="sign-in">
-      <form onclick="return SignInClicK(this)">
+      <form onsubmit="return SignInClicK(this)">
         <article class="input-feild">
           <label for="i-username">Username</label>
           <input type="text" id="i-username" name="userID" required />

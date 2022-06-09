@@ -2,19 +2,35 @@ import filePopulation
 import datetime
 
 
-# Log object, holds the date, odometer reading, amount of petrol and the price of petrol
+# Log object, holds the date, distance reading, amount of petrol and the price of petrol
 class Log:
-	def __init__(self, date, odometer, petrol, price):
+	def __init__(self, date, odometer, distance, petrol, price):
 		self.date = date
-		self.odometer = float(odometer)
+		self.odometer=float(odometer)
+		self.distance = float(distance)
 		self.petrol = float(petrol)
 		self.price = float(price)
 		
 # Takes in a new string and uses the filePopulation class to add the log to the specified file
-#Takes in the file name, date, odometer reading, petrol, and the price
+#Takes in the file name, date, distance reading, petrol, and the price
 def newLog(fileName, date, odometer, petrol, price):
-	l=date+'#'+str(odometer)+'#'+str(petrol)+'#'+str(price)
+	lastLog = getlastLog(fileName)
+	distance = 0
+	if(lastLog != -1):
+		distance = odometer - lastLog.odometer
+	l=date+'#'+str(odometer)+'#'+str(distance)+'#'+str(petrol)+'#'+str(price)
 	filePopulation.dataIn(fileName, l)
+
+# returns the last log entry or -1 if there is no last log entry
+def getlastLog(fileName):
+	lines=filePopulation.dataOut(fileName)
+	if(len(lines)>1):
+		last = lines[len(lines)-1]
+		return makeLog(last)
+	else:
+		return -1
+
+
 
 #obtains the first line of the specified file that holds the vehicle model of the user/file holder
 #Takes in the file name for the log to be appended to
@@ -28,12 +44,14 @@ def getLogs(fileName):
 	v=[]
 	lines=filePopulation.dataOut(fileName)
 	for x in range(1, len(lines)):
-		l=lines[x].split('#')
-		ds=l[0].split('-')
-		d = datetime.date(int(ds[0]), int(ds[1]), int(ds[2]))
-		temp = Log(d, float[1], float[2], float[3])
+		temp = makeLog(lines[x])
 		v.append(temp)
 	return v
+def makeLog(line):
+	l = line.split('#')
+	ds=l[0].split('-')
+	d = datetime.date(int(ds[0]), int(ds[1]), int(ds[2]))
+	return Log(d,l[1], l[2], l[3], l[4])
 	
 def getLogByDate(fileName, date):
 	logs=getLogs(fileName)

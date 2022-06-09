@@ -25,7 +25,10 @@ def fuelEnergy(fType, litres):
 # A single funtion that should do all caluclations contained within the module
 def energyUsed(odometer,prevOdometer, avgConsumption, fuelType):
     distance = distanceTravelled(odometer,prevOdometer)
+    return energyUsedOverDistance(distance,avgConsumption,fuelType)
+   
+
+# finds energy used based on distance rather than odometer
+def energyUsedOverDistance(distance, avgConsumption,fuelType):
     litres = fuelUsed(distance,avgConsumption)
     return fuelEnergy(fuelType,litres)
-
-    

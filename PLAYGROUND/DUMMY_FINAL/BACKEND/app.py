@@ -69,10 +69,11 @@ def GetUserLogs():
     userID = requestData['userID']
     dateStart = requestData['dateStart']
     dateEnd = requestData['dateEnd']
-    distance, energy = dataFetcher.getLog(userID, dateStart, dateEnd)
+    distance, energy, avgEnergy = dataFetcher.getLog(userID, dateStart, dateEnd)
     userData = [{
         'distance':distance,
-        'energy':energy
+        'energy':energy,
+        'average':avgEnergy,
     }]
     return jsonify(userData)
 @app.route('/database/average', methods=['POST'])
@@ -85,10 +86,11 @@ def GetCombinedLogs():
         fuelType = vehicle['fuel']
         dateStart = vehicle['dateStart']
         dateEnd = vehicle['dateEnd']
-        distance, energy = dataFetcher.getCombinedLog(fuelType, vehicelType,dateStart, dateEnd)
+        distance, energy, avgEnergy = dataFetcher.getCombinedLog(fuelType, vehicelType,dateStart, dateEnd)
         travelDatas.append({
-        'distance':distance,
-        'energy':energy
+            'distance':distance,
+            'energy':energy,
+            'average':avgEnergy,
         })
     return jsonify(travelDatas)
 # Basic get funtions

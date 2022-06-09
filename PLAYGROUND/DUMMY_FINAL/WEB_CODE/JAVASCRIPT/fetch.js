@@ -89,6 +89,7 @@ function FetchValidSignIn(username, pword) {
         return resposne.json();
       })
       .then((json) => {
+        console.log(json);
         resolve(json);
       });
   });

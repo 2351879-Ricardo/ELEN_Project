@@ -9,6 +9,7 @@ def dataIn(fileName, log):
 def dataOut(fileName):
 	file1=open(fileName+'.txt', 'r+')
 	logs=file1.readlines()
+	file1.close()
 	return logs
 
 #Takes in the name of the file (without the type) as a string, and a log as a string.
@@ -21,4 +22,5 @@ def byteIn(fileName, log):
 def byteOut(fileName):
 	file1=open(fileName+'.txt', 'r+b')
 	logs=file1.readlines()
+	file1.close()
 	return logs
