@@ -55,8 +55,7 @@ function SumbitLogPost(form) {
   OnSubmitLogPost(form);
   return false;
 }
-
-function OnSubmitLogPost(form) {
+async function OnSubmitLogPost(form) {
   id = GetId();
 
   logData = {
@@ -65,7 +64,8 @@ function OnSubmitLogPost(form) {
     odometer: form.odometer.value,
     aveFuel: form.aveFuel.value,
   };
-  console.log(logData);
-  FetchServer(logData, "/log/post").then((data) => {console.log("log - posted")});
-  return false
+  FetchServer(logData, "/log/post").then((data) => {
+    console.log("log - posted");
+    return false;
+  });
 }

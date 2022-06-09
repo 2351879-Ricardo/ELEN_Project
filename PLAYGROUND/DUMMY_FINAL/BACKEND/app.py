@@ -59,7 +59,7 @@ def PostLog():
     logDate = logData['logDate']
     odometer = logData['odometer']
     averageConsumption = logData['aveFuel']
-    dataFetcher.addLogEntry(userID,logDate,odometer,averageConsumption)
+    dataFetcher.addLogEntry(userID,logDate,float(odometer),float(averageConsumption))
     return jsonify(True)
 # Comparison funtions
 @app.route('/database/userlog', methods=['POST'])
@@ -80,7 +80,6 @@ def GetUserLogs():
 def GetCombinedLogs():
     requestData = request.get_json()
     travelDatas = []
-
     for vehicle in requestData:
         vehicelType = vehicle['vehicle']
         fuelType = vehicle['fuel']

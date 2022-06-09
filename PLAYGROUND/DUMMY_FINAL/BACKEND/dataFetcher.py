@@ -12,7 +12,6 @@ def getVehicleType(vehicleModel):
     s = vehicleModel.split('#')
     vehicle = s[1]
     vehicle = vehicle.strip('\n')
-    print(vehicle)
     return vehicle
     
 # returns true if a log file exists for the given user where fileName=userId
@@ -66,7 +65,7 @@ def vehiclesWithFuelType(fuelType):
             m = log.getVehicleModel(x[0:len(x)-4])
             s = m.split('#')
             if(s[0] == fuelType):
-                v.append(s[1])
+                v.append(getVehicleType(m))
     return v
 
 def getCombinedLog(fuel, vehicle, dateStart, dateEnd):
@@ -75,8 +74,9 @@ def getCombinedLog(fuel, vehicle, dateStart, dateEnd):
     for x in l:
         if(x.endswith('.txt') and x != 'users.txt'):
             vm = log.getVehicleModel(x[0:len(x)-4])
-            if(getFuelType(vm) == fuel or vehicle == 'All'):
-                if(getVehicleType(vm)==vehicle or fuel == 'All'):
-                    logList.append(log.getLogsBetweenDates(dateStart,dateEnd))
+            if(getFuelType(vm) == fuel or fuel == 'All'):
+                if(getVehicleType(vm)==vehicle or vehicle == 'All'):
+                    logList.extend(log.getLogsBetweenDates(x[0:len(x)-4],dateStart,dateEnd))
+
     return calcaultLogs(logList, fuel)
     
