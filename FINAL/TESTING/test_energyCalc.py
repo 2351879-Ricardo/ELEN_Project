@@ -1,5 +1,5 @@
 import unittest
-import CODE.calculation as energyCalc
+import BACKEND
 
 class testEnergyCalc(unittest.TestCase):
     def test_distanceTravelled_1(self):

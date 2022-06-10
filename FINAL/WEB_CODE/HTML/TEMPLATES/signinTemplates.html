@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- NB: these templates require userValidation.js to be included in any document into which they are imported-->
+    <template id="sign-up">
+      <link rel="stylesheet" href="../CSS/css.css" .css />
+      <form onsubmit="return SignUpClicK(this)">
+        <article class="input-feild">
+          <label for="i-new-username">Username</label>
+          <input type="text" id="i-new-username" name="userID" required />
+        </article>
+        <article class="input-feild">
+          <label for="i-new-password">Password</label>
+          <input
+            type="password"
+            id="i-new-password"
+            name="password1"
+            required
+          />
+        </article>
+        <article class="input-feild">
+          <label for="i-new-password-confirm">Confirm Password</label>
+          <input
+            type="password"
+            id="i-password-confirm"
+            name="password2"
+            required
+          />
+        </article>
+
+        <article class="input-feild">
+          <input type="submit" id="i-submit-new-user" value="Create Account" />
+        </article>
+      </form>
+    </template>
+    <template id="sign-in">
+      <link rel="stylesheet" href="../CSS/css.css" .css />
+      <form onsubmit="return SignInClicK(this)">
+        <article class="input-feild">
+          <label for="i-username">Username</label>
+          <input type="text" id="i-username" name="userID" required />
+        </article>
+        <article class="input-feild">
+          <label for="i-password">Password</label>
+          <input type="password" id="i-password" name="password" required />
+        </article>
+        <input type="submit" id="i-login" value="login" />
+      </form>
+    </template>
+  </body>
+</html>

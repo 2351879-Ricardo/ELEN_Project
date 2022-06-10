@@ -1,0 +1,49 @@
+.nav-bar {
+  margin: 0;
+  height: 4rem;
+
+  color: white;
+  background-color: rgb(23, 0, 49);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-bar h1 {
+  float: left;
+  margin-left: 2rem;
+}
+.nav-bar ul {
+  float: right;
+  margin-right: 1rem;
+  display: grid;
+  float: right;
+  display: -moz-grid;
+  grid-auto-flow: column;
+}
+.nav-bar li {
+  list-style-type: none;
+  width: 9rem;
+}
+
+.nav-bar li a,
+.nav-bar li button {
+  margin: auto;
+  padding: 0.5rem 0;
+  text-align: center;
+  display: block;
+  width: 6rem;
+
+  color: inherit;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 0.5rem;
+  border: solid rgb(78, 0, 73) 1px;
+}
+.nav-bar li a:hover {
+  border-radius: 0.5rem;
+  border: solid rgb(163, 0, 153) 2px;
+}
+
+.nav-bar li a.select,
+.nav-bar li button.select {
+  color: aqua;
+}

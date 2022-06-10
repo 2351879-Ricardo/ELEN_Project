@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nav-Bar</title>
+    <link rel="stylesheet" href="../../TEMPLATES/NAV_BAR/navBar.css" />
+  </head>
+  <body>
+    <!--This template requires nav.js to funtion-->
+    <template id="nav-bar">
+      <slot name="selection"></slot>
+      <link rel="stylesheet" href="./TEMPLATES/NAV_BAR/navBar.css" />
+      <nav class="nav-bar">
+        <label for="#nav-bar"
+          ><h1><slot name="title">Power.Log</slot></h1></label
+        >
+        <ul id>
+          <li id="log-link"><a href="./log.html">Log</a></li>
+          <li id="comp-link"><a href="./compare.html">Compare</a></li>
+          <li>
+            <button
+              onclick="{Logout();
+            SetSelection(this);}"
+            >
+              Log out
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </template>
+    <template id="nav-bar-out">
+      <link rel="stylesheet" href="./TEMPLATES/NAV_BAR/navBar.css" />
+      <script src="./TEMPLATES/NAV_BAR/navBar.js"></script>
+      <nav class="nav-bar">
+        <label for="#nav-bar"
+          ><h1><slot name="title">Power.Log</slot></h1></label
+        >
+        <ul>
+          <li>
+            <button
+              onclick="{SetMainPanel('sign-up-panel');
+              SetSelection(this);}"
+            >
+              Sign Up
+            </button>
+          </li>
+          <li>
+            <button
+              onclick="{SetMainPanel('sign-in-panel');
+              SetSelection(this);}"
+            >
+              Login
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </template>
+  </body>
+</html>
