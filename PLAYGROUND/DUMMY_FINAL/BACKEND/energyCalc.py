@@ -22,6 +22,8 @@ def fuelEnergy(fType, litres):
         return lDesel2kwh(litres)
     elif fType == "diesel":
         return lDesel2kwh(litres)
+    else:
+        return litres
 # A single funtion that should do all caluclations contained within the module
 def energyUsed(odometer,prevOdometer, avgConsumption, fuelType):
     distance = distanceTravelled(odometer,prevOdometer)

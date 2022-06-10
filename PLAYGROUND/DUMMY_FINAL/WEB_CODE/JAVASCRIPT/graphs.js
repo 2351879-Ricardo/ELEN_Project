@@ -16,6 +16,9 @@ const chartOptions = {
         zeroLineWidth: 3,
         zeroLineColor: "#2C292E",
       },
+      callback: function (value, index, ticks) {
+        return "$" + value;
+      },
     },
   },
   indexAxis: "y",
@@ -62,7 +65,8 @@ function GetEnergyData(travelData) {
     labels: GetEnergyLables(travelData),
     datasets: [
       {
-        label: "Total Energy used",
+        label:
+          "Total Energy used (Kwh) to travel " + travelData[1].distance + "km",
         data: GetEnergyValues(travelData),
       },
     ],

@@ -1,7 +1,6 @@
 const serverHref = "http://127.0.0.1:5000";
 
 function FetchServer(input, path) {
-  console.log(input);
   return new Promise((resolve) => {
     fetch(serverHref + path, {
       method: "POST",
@@ -15,7 +14,6 @@ function FetchServer(input, path) {
         return resposne.json();
       })
       .then((json) => {
-        console.log(json);
         resolve(json);
       });
   });
@@ -97,7 +95,8 @@ function FetchValidSignIn(username, pword) {
 
 // Dates
 function GetFirstUserEntry() {
-  return "2021-12-29";
+  // return start of year 2022 for now
+  return "2022-01-01";
 }
 function GetToday() {
   let today = new Date();

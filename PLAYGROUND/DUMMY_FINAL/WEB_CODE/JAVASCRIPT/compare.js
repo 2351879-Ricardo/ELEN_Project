@@ -37,9 +37,9 @@ class Vehicle {
   }
 }
 class TravelData {
-  constructor(vehicle, energyUsed, distance) {
+  constructor(vehicle, averageEnergy, distance) {
     this.vehicle = vehicle;
-    this.energyUsed = energyUsed;
+    this.average = averageEnergy;
     this.distance = distance;
   }
   get AverageConsumption() {
@@ -47,7 +47,7 @@ class TravelData {
   }
 
   get energyUse() {
-    return this.energyUsed;
+    return this.average * this.distance;
   }
 
   get distanceTravelled() {
@@ -56,6 +56,9 @@ class TravelData {
 
   get type() {
     return this.type;
+  }
+  get averageUse() {
+    return this.average;
   }
 }
 // called when from is submitted
@@ -79,6 +82,7 @@ function RequestData(form) {
     });
   });
   let travelReports = [];
+  let userDistance;
   FetchServer(userRequest, "/database/userlog")
     .then((userData) => {
       let userReport = new TravelData(
@@ -87,6 +91,7 @@ function RequestData(form) {
         userData[0]["distance"]
       );
       travelReports.push(userReport);
+      userDistance = userData[0]["distance"];
     })
     .then(
       FetchServer(otherRequest, "/database/average").then((response) => {
@@ -94,8 +99,8 @@ function RequestData(form) {
           travelReports.push(
             new TravelData(
               comparedVehicles[i],
-              response[i]["energy"],
-              response[i]["distance"]
+              response[i]["average"] * userDistance,
+              userDistance
             )
           );
         }

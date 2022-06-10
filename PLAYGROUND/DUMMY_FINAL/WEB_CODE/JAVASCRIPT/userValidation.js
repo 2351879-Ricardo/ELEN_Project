@@ -33,7 +33,6 @@ function SignIn(form) {
   let userID = form.userID.value;
   let password = form.password.value;
 
-  // isValid = (PYTHON >> IsValidSignIn(userID, password) >> returns true or false)
   FetchValidSignIn(userID, password).then((isValid) => {
     if (!isValid) {
       DisplayError("UserID and/or Password is Inccorect! here");
@@ -53,4 +52,20 @@ function DisplayError(err) {
     console.warn("Error container is not defined");
   }
   return;
+}
+
+// check fo an existing cookie
+function CheckLogin() {
+  let id = GetId();
+  if (id != null) {
+    FetchUserExists(id).then((existis) => {
+      if (existis) {
+        LoginUser(id);
+      } else {
+        // cookie is bad and should be deleted
+        ClearUserCookie();
+      }
+    });
+    ClearUserCookie(); // clear all cookies for now
+  }
 }

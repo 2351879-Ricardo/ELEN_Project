@@ -47,14 +47,14 @@ def calcaultLogs(logs, fuelType):
     totalEnergy = 0
     i = 0
     for x in logs:
-        if(i!=0):
-            totalEnergy += energyCalc.energyUsedOverDistance(x.distance,x.petrol,fuelType)
-            totalDistance += x.distance
-        i+=1
+        totalEnergy += energyCalc.energyUsedOverDistance(x.distance,x.petrol,fuelType)
+        totalDistance += x.distance
     if(totalDistance != 0):
         avgEnergy = totalEnergy/totalDistance
+        print('good')
     else:
         avgEnergy = 0
+        print('bad')
     return totalDistance, totalEnergy, avgEnergy
 
 def vehiclesWithFuelType(fuelType):

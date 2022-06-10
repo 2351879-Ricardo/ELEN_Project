@@ -6,7 +6,7 @@ import dataFetcher
 
 # Vehicle types - to be edited impoved and updated as needed
 FUEL_TYPES = ['Petrol', 'Diesel', 'Electric']
-VEHICEL_TYPES = ["SUV", "hatchback","crossover","convertable","sedan","sports car","coupe","minivan","4x4","pickup","truck","motorbike",]
+VEHICEL_TYPES = ["SUV", "Hatchback","Crossover","Convertable","Sedan","Sports Car","Coupe","Minivan","4x4","Pickup","Truck","Motorbike",]
 
 app = Flask(__name__)
 cors = CORS(app)
