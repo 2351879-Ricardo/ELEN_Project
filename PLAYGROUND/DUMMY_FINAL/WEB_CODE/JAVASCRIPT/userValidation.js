@@ -58,14 +58,15 @@ function DisplayError(err) {
 function CheckLogin() {
   let id = GetId();
   if (id != null) {
-    FetchUserExists(id).then((existis) => {
+    /*FetchUserExists(id).then((existis) => {
       if (existis) {
         LoginUser(id);
       } else {
         // cookie is bad and should be deleted
         ClearUserCookie();
       }
-    });
-    ClearUserCookie(); // clear all cookies for now
+    });*/
+   // clear all cookies for now
   }
+  ClearUserCookie();
 }
