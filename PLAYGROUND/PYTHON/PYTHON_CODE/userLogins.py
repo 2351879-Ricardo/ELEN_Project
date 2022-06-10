@@ -1,3 +1,7 @@
+# version 0.3.1
+# Author: R. Costa-Tre
+# Last endited: R. Costa-Tre (10 June 2022)
+
 import hashlib
 import os
 import filePopulation
@@ -88,7 +92,7 @@ def IsValidSignIn(userID, password):
         if (newKey == storageKey):
             return True
         else:
-            return False
+            return False  
     
     # Returns False on invalid UserID
     return False
